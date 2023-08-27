@@ -62,6 +62,11 @@ function display(x)
         disp.textContent += x;
     }
     display_value = disp.textContent * 1;
+    if (isNaN(display_value))
+    {
+        alert("Please enter a number before adding a '.'");
+        return;
+    }
     if (op_check === 0)
     {
         first_number = display_value;
