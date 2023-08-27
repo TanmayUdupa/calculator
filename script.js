@@ -166,6 +166,38 @@ function clear()
     disp.textContent = 0;
 }
 
+function back()
+{
+    if (last_number === 'a' && op_check === 1)
+    {
+        alert("You have not yet entered value for backspace to work after giving operand. Please enter a number");
+        return;
+    }
+    disp = document.querySelector(".display");
+    if (disp.textContent === 0)
+    {
+        return;
+    }
+    else if (disp.textContent.length === 1)
+    {
+        disp.textContent = '0';
+    }
+    else
+    {
+        disp.textContent = disp.textContent.slice(0, disp.textContent.length - 1);
+        console.log(disp.textContent);
+    }
+    display_value = disp.textContent * 1;
+    if (op_check === 0)
+    {
+        first_number = display_value;
+    }
+    else
+    {
+        last_number = display_value;
+    }
+}
+
 num = document.querySelectorAll(".num, .dec");
 
 num.forEach((number) => (number.addEventListener('click', function () {display(number.textContent)})));
@@ -179,3 +211,6 @@ sol.addEventListener('click', solve);
 
 clr = document.querySelector(".clear");
 clr.addEventListener('click', clear);
+
+backspace = document.querySelector(".backspace");
+backspace.addEventListener('click', back);

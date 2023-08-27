@@ -49,11 +49,16 @@ button {
     color: white;
 }
 
-.clear {
-    width: 360px;
-    margin-left: 20px;
+.erase {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.clear, .backspace {
+    width: 170px;
     height: 60px;
-    background-color: rgb(4, 212, 4);
+    background-color: rgb(67, 210, 67);
+    font-size: 32px;
 }
 
 .op, .sol  {
