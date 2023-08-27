@@ -210,7 +210,6 @@ function back()
 
 function key_display(e)
 {
-    console.log(e);
     if ((e.code === 'Digit0' || e.code === 'Digit1' || e.code === 'Digit2' || e.code === 'Digit3' || e.code === 'Digit4' || e.code === 'Digit5' || e.code === 'Digit6' || e.code === 'Digit7' || e.code === 'Digit8' || e.code === 'Digit9') && e.shiftKey === false)
     {
         display(e.code[e.code.length - 1]);
