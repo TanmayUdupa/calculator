@@ -13,7 +13,7 @@ h1 {
 }
 
 .calculator {
-    height: 600px;
+    height: auto;
     width: 400px;
     background-color: #3a393f;
     border-radius: 20px;
@@ -22,12 +22,13 @@ h1 {
 .display {
     background-color: #465a5c;
     width: 350px;
-    height: 100px;
+    height: auto;
     margin: 20px;
     border-radius: 15px;
     text-align: right;
     font-size: 80px;
     padding-right: 10px;
+    word-wrap: break-word;
 }
 
 .buttons {
