@@ -65,6 +65,8 @@ function display(x)
     if (isNaN(display_value))
     {
         alert("Please enter a number before adding a '.'");
+        disp.textContent = '0';
+        display_value = 0;
         return;
     }
     if (op_check === 0)
