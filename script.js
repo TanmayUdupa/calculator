@@ -59,11 +59,6 @@ function display(x)
     }
     else
     {
-        if (disp.textContent[disp.textContent.length - 1] === '.' && x === '.')
-        {
-            alert("You cannot enter a decimal point again after entering a decimal point");
-            return;
-        }
         disp.textContent += x;
     }
     display_value = disp.textContent * 1;
@@ -148,6 +143,17 @@ function solve()
     operator = '';
 }
 
+function decimal()
+{
+    disp = document.querySelector(".display");
+    if (disp.textContent.includes('.'))
+    {
+        alert("You cannot add more than two decimal points");
+        return;
+    }
+    display('.');
+}
+
 function clear()
 {
     disp = document.querySelector(".display");
@@ -185,7 +191,6 @@ function back()
     else
     {
         disp.textContent = disp.textContent.slice(0, disp.textContent.length - 1);
-        console.log(disp.textContent);
     }
     display_value = disp.textContent * 1;
     if (op_check === 0)
@@ -198,9 +203,53 @@ function back()
     }
 }
 
-num = document.querySelectorAll(".num, .dec");
+function key_display(e)
+{
+    console.log(e);
+    if ((e.code === 'Digit0' || e.code === 'Digit1' || e.code === 'Digit2' || e.code === 'Digit3' || e.code === 'Digit4' || e.code === 'Digit5' || e.code === 'Digit6' || e.code === 'Digit7' || e.code === 'Digit8' || e.code === 'Digit9') && e.shiftKey === false)
+    {
+        display(e.code[e.code.length - 1]);
+    }
+    else if (e.code === 'Period')
+    {
+        decimal();
+    }
+    else if (e.code === 'Slash')
+    {
+        oper('÷');
+    }
+    else if (e.code === 'Minus')
+    {
+        oper('-');
+    }
+    else if (e.code === 'Equal' && e.shiftKey === true)
+    {
+        oper('+');
+    }
+    else if (e.code === 'Digit8' && e.shiftKey === true)
+    {
+        oper('×');
+    }
+    else if ((e.code === 'Equal' && e.shiftKey === false) || e.code === 'Enter')
+    {
+        solve();
+    }
+    else if (e.code === 'Backspace')
+    {
+        back();
+    }
+    else if (e.code !== 'ShiftLeft' && e.code !== 'ShiftRight')
+    {
+        alert('Invalid key pressed');
+    }
+}
+
+num = document.querySelectorAll(".num");
 
 num.forEach((number) => (number.addEventListener('click', function () {display(number.textContent)})));
+
+dec = document.querySelector(".dec");
+dec.addEventListener('click', decimal);
 
 op = document.querySelectorAll(".op");
 
@@ -214,3 +263,5 @@ clr.addEventListener('click', clear);
 
 backspace = document.querySelector(".backspace");
 backspace.addEventListener('click', back);
+
+window.addEventListener('keydown', key_display);
