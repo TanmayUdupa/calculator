@@ -53,4 +53,9 @@ button {
     width: 360px;
     margin-left: 20px;
     height: 60px;
+    background-color: rgb(4, 212, 4);
+}
+
+.op, .sol  {
+    background-color: #ff7f7f;
 }

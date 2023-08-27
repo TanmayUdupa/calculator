@@ -59,6 +59,11 @@ function display(x)
     }
     else
     {
+        if (disp.textContent[disp.textContent.length - 1] === '.' && x === '.')
+        {
+            alert("You cannot enter a decimal point again after entering a decimal point");
+            return;
+        }
         disp.textContent += x;
     }
     display_value = disp.textContent * 1;
@@ -112,7 +117,11 @@ function solve()
     }
     result = operate(operator, first_number, last_number);
     text_check = 1;
-    if (result.toString().length > 8)
+    if (!(Number.isInteger(result)))
+    {
+        result = result.toFixed(3);
+    }
+    else if (result.toString().length > 8)
     {
         result = result.toExponential();
     }
@@ -157,7 +166,7 @@ function clear()
     disp.textContent = 0;
 }
 
-num = document.querySelectorAll(".num");
+num = document.querySelectorAll(".num, .dec");
 
 num.forEach((number) => (number.addEventListener('click', function () {display(number.textContent)})));
 
